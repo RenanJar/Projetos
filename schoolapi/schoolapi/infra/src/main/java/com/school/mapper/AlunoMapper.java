@@ -1,7 +1,7 @@
 package com.school.mapper;
 
 import com.school.dto.request.CadastrarAlunoRequest;
-import com.school.entidade.Aluno;
+import com.school.entidade.aluno.Aluno;
 import com.school.model.AlunoModel;
 
 public class AlunoMapper {

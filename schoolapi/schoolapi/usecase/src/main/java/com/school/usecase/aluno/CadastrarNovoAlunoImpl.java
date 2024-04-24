@@ -1,6 +1,6 @@
 package com.school.usecase.aluno;
 
-import com.school.entidade.Aluno;
+import com.school.entidade.aluno.Aluno;
 import com.school.gateway.CadastrarAlunoGateway;
 import com.school.usecaseinterface.aluno.CadastrarNovoAluno;
 

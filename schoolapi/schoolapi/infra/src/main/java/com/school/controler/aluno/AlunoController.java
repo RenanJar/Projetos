@@ -1,7 +1,7 @@
 package com.school.controler.aluno;
 
 import com.school.dto.request.CadastrarAlunoRequest;
-import com.school.entidade.Aluno;
+import com.school.entidade.aluno.Aluno;
 import com.school.mapper.AlunoMapper;
 import com.school.usecaseinterface.aluno.CadastrarNovoAluno;
 import org.springframework.http.ResponseEntity;
