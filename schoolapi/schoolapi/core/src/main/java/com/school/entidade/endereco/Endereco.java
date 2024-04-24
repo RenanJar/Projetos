@@ -37,5 +37,23 @@ public class Endereco extends Entity {
         this.cep = cep;
     }
 
+    public Endereco criarEndereco(String rua,
+                                  Long numero,
+                                  String complemento,
+                                  String bairro,
+                                  String cidade,
+                                  String estado,
+                                  String pais,
+                                  CEP cep) {
+        if(validarCampos(rua, numero, bairro, cidade, estado, pais, cep)) {
+            return new Endereco(rua, numero, complemento, bairro, cidade, estado, pais, cep);
+        }
+        return null;
+    }
 
+    public boolean validarCampos(String rua, Long numero, String bairro, String cidade, String estado, String pais, CEP cep) {
+        ///if(rua.trim().isEmpty() || numero.trim().isEmpty().isNan() || bairro.trim().isEmpty() || cidade.trim().isEmpty() || estado.trim().isEmpty() || pais.trim().isEmpty() || cep.trim().isEmpty().isNan()) {
+            return false;
+     ///   }
+    }
 }

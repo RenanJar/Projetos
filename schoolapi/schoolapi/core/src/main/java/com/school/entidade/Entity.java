@@ -10,3 +10,4 @@ public abstract class Entity {
     protected LocalDate dataDelete;
     protected Boolean isDelete;
 }
+
