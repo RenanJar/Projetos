@@ -66,7 +66,7 @@ public class Aluno extends Entity {
     }
 
     public static Aluno atualizarAluno(Aluno aluno){
-        Aluno alunoValidado = validarAluno(aluno);
+        Aluno alunoValidado = validarAtualizarAluno(aluno);
         Aluno alunoAtualizado = new Aluno();
         alunoAtualizado.setNome(alunoValidado.getNome());
         alunoAtualizado.setEmail(alunoValidado.getEmail());
@@ -97,7 +97,7 @@ public class Aluno extends Entity {
                 null,
                 false
         );
-        return validarAluno(aluno);
+        return validarCriarAluno(aluno);
     }
 
     public Aluno excluirAluno(Aluno aluno){
