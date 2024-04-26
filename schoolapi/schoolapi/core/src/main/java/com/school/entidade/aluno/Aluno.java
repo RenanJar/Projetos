@@ -10,7 +10,6 @@ import java.util.UUID;
 
 @Getter
 @Setter
-@Builder
 public class Aluno extends Entity {
 
     private String nome;
@@ -19,7 +18,8 @@ public class Aluno extends Entity {
     private Long numeroContato;
     private String email;
 
-    private  Aluno(
+    private Aluno(
+            UUID id,
             String nome,
             LocalDate dataNascimento,
             Endereco endereco,
@@ -31,6 +31,7 @@ public class Aluno extends Entity {
             Boolean isDeleted
 
     ){
+        this.ID = id;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.endereco = endereco;
@@ -42,7 +43,9 @@ public class Aluno extends Entity {
         this.isDelete = isDeleted;
     }
 
-    public Aluno cadastrarAluno(
+    private Aluno(){}
+
+    public static Aluno criarAluno(
             String nome,
             LocalDate dataNascimento,
             Endereco endereco,
@@ -62,43 +65,63 @@ public class Aluno extends Entity {
         return novoAluno;
     }
 
-    public Aluno atualizarAluno(
-            String nome,
-            LocalDate dataNascimento,
-            Endereco endereco,
-            Long numeroContato,
-            String email
-    ){
-        Aluno novoAluno =  buildAluno(nome, dataNascimento, endereco, numeroContato, email);
-        novoAluno.setDataAtualizacao(LocalDate.now());
-        return novoAluno;
+    public static Aluno atualizarAluno(Aluno aluno){
+        Aluno alunoValidado = validarAluno(aluno);
+        Aluno alunoAtualizado = new Aluno();
+        alunoAtualizado.setNome(alunoValidado.getNome());
+        alunoAtualizado.setEmail(alunoValidado.getEmail());
+        alunoAtualizado.setNumeroContato(alunoValidado.getNumeroContato());
+        alunoAtualizado.setID(alunoValidado.getID());
+        alunoAtualizado.setDataNascimento(alunoValidado.getDataAtualizacao());
+        alunoAtualizado.setDataAtualizacao(LocalDate.now());
+        return alunoAtualizado;
     }
 
-    private Aluno buildAluno(
+    private static Aluno buildAluno(
             String nome,
             LocalDate dataNascimento,
             Endereco endereco,
             Long numeroContato,
             String email
     ){
-        Objects.requireNonNull(nome, "Nome nao pode ser vazio");
-        Objects.requireNonNull(dataNascimento,"Aluno deve conter uma data de nascimento");
-        Objects.requireNonNull(endereco,"Aluno deve conter um endereço");
-        Objects.requireNonNull(numeroContato,"Aluno deve Conter um numero para Contato");
-        Objects.requireNonNull(email,"Aluno deve Conter um E-mail");
-
-        return new AlunoBuilder()
-                .nome(nome)
-                .endereco(endereco)
-                .email(email)
-                .numeroContato(numeroContato)
-                .dataNascimento(dataNascimento)
-                .build();
+        LocalDate dataHoje = LocalDate.now();
+        Aluno aluno = new Aluno(
+                null,
+                nome,
+                dataNascimento,
+                endereco,
+                numeroContato,
+                email,
+                dataHoje,
+                null,
+                null,
+                false
+        );
+        return validarAluno(aluno);
     }
 
     public Aluno excluirAluno(Aluno aluno){
         aluno.setDataDelete(LocalDate.now());
         aluno.setIsDelete(true);
+        return aluno;
+    }
+
+    private static Aluno validarAtualizarAluno(Aluno aluno){
+        Objects.requireNonNull(aluno.getID(), "ID de Aluno nao pode ser vazio");
+        Objects.requireNonNull(aluno.getNome(), "Nome nao pode ser vazio");
+        Objects.requireNonNull(aluno.getDataNascimento(),"Aluno deve conter uma data de nascimento");
+        Objects.requireNonNull(aluno.getEndereco(),"Aluno deve conter um endereço");
+        Objects.requireNonNull(aluno.getNumeroContato(),"Aluno deve Conter um numero para Contato");
+        Objects.requireNonNull(aluno.getEmail(),"Aluno deve Conter um E-mail");
+        return aluno;
+    }
+
+    private static Aluno validarCriarAluno(Aluno aluno){
+        Objects.requireNonNull(aluno.getNome(), "Nome nao pode ser vazio");
+        Objects.requireNonNull(aluno.getDataNascimento(),"Aluno deve conter uma data de nascimento");
+        Objects.requireNonNull(aluno.getEndereco(),"Aluno deve conter um endereço");
+        Objects.requireNonNull(aluno.getNumeroContato(),"Aluno deve Conter um numero para Contato");
+        Objects.requireNonNull(aluno.getEmail(),"Aluno deve Conter um E-mail");
         return aluno;
     }
 
