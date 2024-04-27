@@ -7,8 +7,12 @@ import com.school.model.AlunoModel;
 public class AlunoMapper {
 
     public Aluno toAluno(CadastrarAlunoRequest request){
-        Aluno aluno =  new Aluno();
-        aluno.setNome(request.getNome());
+        Aluno aluno =  Aluno.criarAluno(
+                request.getNome(),
+                request.getDataNascimento(),
+                request.getEndereco(),
+                request.getNumeroContato(),
+                request.getEmail());
         return aluno;
     }
 
