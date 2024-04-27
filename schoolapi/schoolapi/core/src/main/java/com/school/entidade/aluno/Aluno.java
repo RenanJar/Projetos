@@ -74,7 +74,15 @@ public class Aluno extends Entity {
         alunoAtualizado.setID(alunoValidado.getID());
         alunoAtualizado.setDataNascimento(alunoValidado.getDataAtualizacao());
         alunoAtualizado.setDataAtualizacao(LocalDate.now());
+        alunoAtualizado.setIsDelete(false);
         return alunoAtualizado;
+    }
+
+    public static Aluno deletarAluno(Aluno aluno){
+        Objects.requireNonNull(aluno.getID());
+        aluno.setIsDelete(true);
+        aluno.setDataDelete(LocalDate.now());
+        return aluno;
     }
 
     private static Aluno buildAluno(

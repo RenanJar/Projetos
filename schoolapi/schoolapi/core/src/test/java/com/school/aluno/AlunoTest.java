@@ -70,9 +70,17 @@ public class AlunoTest {
         Assert.assertFalse(novoAluno.getIsDelete());
     }
 
+    public Aluno criarNovoAluno(){
+        UUID fakeID = UUID.randomUUID();
+        Aluno aluno = Aluno.criarAluno(nome,dataNascimento,mockedEndereco,numeroContato,email);
+        aluno.setID(fakeID);
+        return aluno;
+    }
+
     @Test
     public void deveRetornarErroAoTentarAtualizarAlunoSemID(){
-        Aluno alunoAtualizado = Aluno.criarAluno("Alan Oliveira",dataNascimento,mockedEndereco,numeroContato,email);
+        Aluno alunoAtualizado = criarNovoAluno();
+        alunoAtualizado.setID(null);
         Assert.assertThrows(NullPointerException.class, ()->{
             Aluno.atualizarAluno(alunoAtualizado);
         });
@@ -80,31 +88,30 @@ public class AlunoTest {
 
     @Test
     public void deveRetornarErroAoTentarAtualizarAlunoSemNome(){
-        UUID fakeID = UUID.randomUUID();
-        Aluno alunoAtualizado = Aluno.criarAluno(null,dataNascimento,mockedEndereco,numeroContato,email);
-        alunoAtualizado.setID(fakeID);
-
+        Aluno aluno = criarNovoAluno();
+        aluno.setNome(null);
         Assert.assertThrows(NullPointerException.class, ()->{
-           Aluno.atualizarAluno(alunoAtualizado);
+            Aluno.atualizarAluno(aluno);
         });
     }
 
     @Test
     public void deveAtualizarNomeAluno(){
-        UUID fakeID = UUID.randomUUID();
-        Aluno alunoAtualizado = Aluno.criarAluno("Rodolfo Pirani",dataNascimento,mockedEndereco,numeroContato,email);
-        alunoAtualizado.setID(fakeID);
+        Aluno aluno = criarNovoAluno();
+        aluno.setNome("Rodolfo Pirani");
+        Aluno alunoAtualizado = Aluno.atualizarAluno(aluno);
         Assert.assertTrue(alunoAtualizado.getNome().equals("Rodolfo Pirani"));
     }
 
     @Test
     public void deveRetornarErroAoAtualizarSemDataDeNascimento(){
         UUID fakeID = UUID.randomUUID();
-        Aluno alunoAtualizado = Aluno.criarAluno("Rodolfo Pirani",null,mockedEndereco,numeroContato,email);
-        alunoAtualizado.setID(fakeID);
+        Aluno aluno = criarNovoAluno();
+        aluno.setDataNascimento(null);
+        aluno.setID(fakeID);
 
         Assert.assertThrows(NullPointerException.class, ()->{
-            Aluno.atualizarAluno(alunoAtualizado);
+            Aluno.atualizarAluno(aluno);
         });
     }
 
@@ -112,15 +119,20 @@ public class AlunoTest {
     public void deveAtualizarDataDeNascimento(){
         UUID fakeID = UUID.randomUUID();
         LocalDate dataAtualizada = LocalDate.of(2002,6,6);
-        Aluno alunoAtualizado = Aluno.criarAluno("Rodolfo Pirani",dataAtualizada,mockedEndereco,numeroContato,email);
-        alunoAtualizado.setID(fakeID);
+
+        Aluno aluno = criarNovoAluno();
+        aluno.setDataAtualizacao(dataAtualizada);
+        aluno.setID(fakeID);
+
+        Aluno alunoAtualizado = Aluno.atualizarAluno(aluno);
         Assert.assertTrue(alunoAtualizado.getDataNascimento().equals(dataAtualizada));
     }
 
     @Test
     public void deveRetornarErroAoAtualizarSemEndereco(){
         UUID fakeID = UUID.randomUUID();
-        Aluno alunoAtualizado = Aluno.criarAluno(nome,dataNascimento,null,numeroContato,email);
+        Aluno alunoAtualizado = criarNovoAluno();
+        alunoAtualizado.setEndereco(null);
         alunoAtualizado.setID(fakeID);
 
         Assert.assertThrows(NullPointerException.class, ()-> {
@@ -130,12 +142,13 @@ public class AlunoTest {
 
     @Test
     public void deveRetornarErroAoAtualizarSemEmail(){
-        Aluno alunoAtualizado = Aluno.criarAluno(nome,dataNascimento,mockedEndereco,numeroContato,null);
+        Aluno aluno = criarNovoAluno();
         UUID fakeID = UUID.randomUUID();
-        alunoAtualizado.setID(fakeID);
+        aluno.setID(fakeID);
+        aluno.setEmail(null);
 
         Assert.assertThrows(NullPointerException.class, ()-> {
-            Aluno.atualizarAluno(alunoAtualizado);
+            Aluno.atualizarAluno(aluno);
         });
     }
 
@@ -143,30 +156,60 @@ public class AlunoTest {
     public void deveAtualizarEmail(){
         UUID fakeID = UUID.randomUUID();
         String newEmail = "RodolfoEmail@gmail.com";
-        Aluno aluno = Aluno.criarAluno("Rodolfo Pirani",dataNascimento,mockedEndereco,numeroContato,email);
+        Aluno aluno = criarNovoAluno();
         aluno.setID(fakeID);
         aluno.setEmail(newEmail);
-        Aluno alunoAtualizado = Aluno.atualizarAluno(aluno);
-        Assert.assertTrue(alunoAtualizado.getDataNascimento().equals(newEmail));
-    }
 
-    @Test
-    public void deveAtualizarAlunoSemErros(){
-        Aluno novoAluno = Aluno.criarAluno(nome,dataNascimento,mockedEndereco,numeroContato,email);
-        Assert.assertNotNull(novoAluno);
+        Aluno alunoAtualizado = Aluno.atualizarAluno(aluno);
+        Assert.assertTrue(alunoAtualizado.getEmail().equals(newEmail));
     }
 
     @Test
     public void deveExibirDataDeAtualizacaoAluno(){
-        Aluno novoAluno = Aluno.criarAluno(nome,dataNascimento,mockedEndereco,numeroContato,email);
+        UUID fakeID = UUID.randomUUID();
+        Aluno aluno = criarNovoAluno();
         LocalDate dataHoje =  LocalDate.now();
-        Assert.assertEquals(dataHoje, novoAluno.getDataInclusao());
+        aluno.setID(fakeID);
+
+        Aluno alunoatualziado = Aluno.atualizarAluno(aluno);
+        Assert.assertEquals(dataHoje, alunoatualziado.getDataAtualizacao());
     }
 
     @Test
     public void deveRetornarAlunoNaoDeletadoAoAtualizar(){
-        Aluno novoAluno = Aluno.criarAluno(nome,dataNascimento,mockedEndereco,numeroContato,email);
-        Assert.assertFalse(novoAluno.getIsDelete());
+        Aluno aluno = criarNovoAluno();
+        Aluno alunoatualizado = Aluno.atualizarAluno(aluno);
+        Assert.assertFalse(alunoatualizado.getIsDelete());
+    }
+
+    @Test
+    public void deveRetornarErroQuandoDeletarAlunoSemID(){
+        Aluno aluno = criarNovoAluno();
+        aluno.setID(null);
+        Assert.assertThrows(NullPointerException.class, ()-> {
+            Aluno.deletarAluno(aluno);
+        });
+    }
+
+    @Test
+    public void deveSetarIsDeletedToTrue(){
+        UUID fakeID = UUID.randomUUID();
+        Aluno aluno = criarNovoAluno();
+        aluno.setID(fakeID);
+
+        Aluno alunoDeletado = Aluno.deletarAluno(aluno);
+        Assert.assertTrue(alunoDeletado.getIsDelete());
+    }
+
+    @Test
+    public void deveAprensentarDataExclusao(){
+        UUID fakeID = UUID.randomUUID();
+        Aluno aluno = criarNovoAluno();
+        aluno.setID(fakeID);
+
+        Aluno alunoDeletado = Aluno.deletarAluno(aluno);
+
+        Assert.assertTrue(alunoDeletado.getDataDelete().equals(LocalDate.now()));
     }
 
 }
