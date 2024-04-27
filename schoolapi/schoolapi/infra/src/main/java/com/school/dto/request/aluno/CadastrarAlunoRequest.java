@@ -1,4 +1,4 @@
-package com.school.dto.request;
+package com.school.dto.request.aluno;
 
 import com.school.entidade.endereco.Endereco;
 import lombok.Getter;

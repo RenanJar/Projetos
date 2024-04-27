@@ -1,4 +1,4 @@
-package com.school.service;
+package com.school.service.aluno;
 
 import com.school.entidade.aluno.Aluno;
 import com.school.gateway.CadastrarAlunoGateway;
