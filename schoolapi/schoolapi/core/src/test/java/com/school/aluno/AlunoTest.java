@@ -89,8 +89,9 @@ public class AlunoTest {
     @Test
     public void deveRetornarErroAoTentarAtualizarAlunoSemNome(){
         Aluno aluno = criarNovoAluno();
-        aluno.setNome(null);
+
         Assert.assertThrows(NullPointerException.class, ()->{
+            aluno.trocarNome(null);
             Aluno.atualizarAluno(aluno);
         });
     }
@@ -98,7 +99,7 @@ public class AlunoTest {
     @Test
     public void deveAtualizarNomeAluno(){
         Aluno aluno = criarNovoAluno();
-        aluno.setNome("Rodolfo Pirani");
+        aluno.trocarNome("Rodolfo Pirani");
         Aluno alunoAtualizado = Aluno.atualizarAluno(aluno);
         Assert.assertTrue(alunoAtualizado.getNome().equals("Rodolfo Pirani"));
     }
@@ -107,10 +108,10 @@ public class AlunoTest {
     public void deveRetornarErroAoAtualizarSemDataDeNascimento(){
         UUID fakeID = UUID.randomUUID();
         Aluno aluno = criarNovoAluno();
-        aluno.setDataNascimento(null);
         aluno.setID(fakeID);
 
         Assert.assertThrows(NullPointerException.class, ()->{
+            aluno.trocarDataNascimento(null);
             Aluno.atualizarAluno(aluno);
         });
     }
@@ -121,7 +122,7 @@ public class AlunoTest {
         LocalDate dataAtualizada = LocalDate.of(2002,6,6);
 
         Aluno aluno = criarNovoAluno();
-        aluno.setDataAtualizacao(dataAtualizada);
+        aluno.trocarDataNascimento(dataAtualizada);
         aluno.setID(fakeID);
 
         Aluno alunoAtualizado = Aluno.atualizarAluno(aluno);
@@ -132,10 +133,10 @@ public class AlunoTest {
     public void deveRetornarErroAoAtualizarSemEndereco(){
         UUID fakeID = UUID.randomUUID();
         Aluno alunoAtualizado = criarNovoAluno();
-        alunoAtualizado.setEndereco(null);
         alunoAtualizado.setID(fakeID);
 
         Assert.assertThrows(NullPointerException.class, ()-> {
+            alunoAtualizado.trocarEndereco(null);
             Aluno.atualizarAluno(alunoAtualizado);
         });
     }
@@ -145,9 +146,10 @@ public class AlunoTest {
         Aluno aluno = criarNovoAluno();
         UUID fakeID = UUID.randomUUID();
         aluno.setID(fakeID);
-        aluno.setEmail(null);
+
 
         Assert.assertThrows(NullPointerException.class, ()-> {
+            aluno.trocarEmail(null);
             Aluno.atualizarAluno(aluno);
         });
     }
@@ -158,7 +160,7 @@ public class AlunoTest {
         String newEmail = "RodolfoEmail@gmail.com";
         Aluno aluno = criarNovoAluno();
         aluno.setID(fakeID);
-        aluno.setEmail(newEmail);
+        aluno.trocarEmail(newEmail);
 
         Aluno alunoAtualizado = Aluno.atualizarAluno(aluno);
         Assert.assertTrue(alunoAtualizado.getEmail().equals(newEmail));
