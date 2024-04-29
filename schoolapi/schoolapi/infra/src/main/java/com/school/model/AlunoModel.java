@@ -1,12 +1,18 @@
 package com.school.model;
 
+import com.school.entidade.endereco.Endereco;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.annotation.processing.Generated;
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
 @Table(name="TBL_ALUNO")
+@Getter
+@Setter
 public class AlunoModel {
 
     @Id
@@ -17,19 +23,16 @@ public class AlunoModel {
     @Column(name = "nome")
     private String nome;
 
-    public UUID getId() {
-        return id;
-    }
+    @Column(name = "dataNascimento")
+    private LocalDate dataNascimento;
 
-    public void setId(UUID id) {
-        this.id = id;
-    }
+    @Column(name ="endereco_id")
+    private Endereco endereco;
 
-    public String getNome() {
-        return nome;
-    }
+    @Column(name="numeroContato")
+    private Long numeroContato;
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+    @Column(name="email")
+    private String email;
+
 }

@@ -9,7 +9,6 @@ import java.util.Objects;
 import java.util.UUID;
 
 @Getter
-@Setter
 public class Aluno extends Entity {
 
     private String nome;
@@ -68,11 +67,12 @@ public class Aluno extends Entity {
     public static Aluno atualizarAluno(Aluno aluno){
         Aluno alunoValidado = validarAtualizarAluno(aluno);
         Aluno alunoAtualizado = new Aluno();
-        alunoAtualizado.setNome(alunoValidado.getNome());
-        alunoAtualizado.setEmail(alunoValidado.getEmail());
-        alunoAtualizado.setNumeroContato(alunoValidado.getNumeroContato());
+        alunoAtualizado.trocarNome(alunoValidado.getNome());
+        alunoAtualizado.trocarEmail(alunoValidado.getEmail());
+        alunoAtualizado.trocarNumeroContato(alunoValidado.getNumeroContato());
         alunoAtualizado.setID(alunoValidado.getID());
-        alunoAtualizado.setDataNascimento(alunoValidado.getDataAtualizacao());
+        alunoAtualizado.trocarEndereco(aluno.getEndereco());
+        alunoAtualizado.trocarDataNascimento(alunoValidado.getDataNascimento());
         alunoAtualizado.setDataAtualizacao(LocalDate.now());
         alunoAtualizado.setIsDelete(false);
         return alunoAtualizado;
@@ -115,22 +115,74 @@ public class Aluno extends Entity {
     }
 
     private static Aluno validarAtualizarAluno(Aluno aluno){
-        Objects.requireNonNull(aluno.getID(), "ID de Aluno nao pode ser vazio");
-        Objects.requireNonNull(aluno.getNome(), "Nome nao pode ser vazio");
-        Objects.requireNonNull(aluno.getDataNascimento(),"Aluno deve conter uma data de nascimento");
-        Objects.requireNonNull(aluno.getEndereco(),"Aluno deve conter um endereço");
-        Objects.requireNonNull(aluno.getNumeroContato(),"Aluno deve Conter um numero para Contato");
-        Objects.requireNonNull(aluno.getEmail(),"Aluno deve Conter um E-mail");
+        validarID(aluno.getID());
+        validarNome(aluno.getNome());
+        validarDataNascimento(aluno.getDataNascimento());
+        validarNumeroContato(aluno.getNumeroContato());
+        validarEndereco(aluno.getEndereco());
+        validarEmail(aluno.getEmail());
         return aluno;
     }
 
     private static Aluno validarCriarAluno(Aluno aluno){
-        Objects.requireNonNull(aluno.getNome(), "Nome nao pode ser vazio");
-        Objects.requireNonNull(aluno.getDataNascimento(),"Aluno deve conter uma data de nascimento");
-        Objects.requireNonNull(aluno.getEndereco(),"Aluno deve conter um endereço");
-        Objects.requireNonNull(aluno.getNumeroContato(),"Aluno deve Conter um numero para Contato");
-        Objects.requireNonNull(aluno.getEmail(),"Aluno deve Conter um E-mail");
+        validarNome(aluno.getNome());
+        validarDataNascimento(aluno.getDataNascimento());
+        validarNumeroContato(aluno.getNumeroContato());
+        validarEndereco(aluno.getEndereco());
+        validarEmail(aluno.getEmail());
         return aluno;
     }
+
+   private static void validarNome(String nome){
+       Objects.requireNonNull(nome, "Nome nao pode ser vazio");
+   }
+
+   private static void validarDataNascimento(LocalDate dataNascimento){
+       Objects.requireNonNull(dataNascimento,"Aluno deve conter uma data de nascimento");
+   }
+
+   private static void validarEndereco(Endereco endereco){
+       Objects.requireNonNull(endereco,"Aluno deve conter um endereço");
+
+   }
+
+   private static void validarNumeroContato(Long numeroContato){
+       Objects.requireNonNull(numeroContato,"Aluno deve Conter um numero para Contato");
+
+   }
+
+   private static void validarEmail(String email){
+       Objects.requireNonNull(email,"Aluno deve Conter um E-mail");
+   }
+
+   private static void validarID(UUID ID){
+       Objects.requireNonNull(ID, "ID de Aluno nao pode ser vazio");
+   }
+
+   public void trocarNome(String nome){
+        validarNome(nome);
+        this.nome = nome;
+   }
+
+   public void trocarEndereco(Endereco endereco){
+        validarEndereco(endereco);
+        this.endereco = endereco;
+   }
+
+   public void trocarEmail(String email){
+        validarEmail(email);
+        this.email = email;
+   }
+
+   public void trocarNumeroContato(Long numeroContato){
+        validarNumeroContato(numeroContato);
+        this.numeroContato = numeroContato;
+   }
+
+   public void trocarDataNascimento(LocalDate dataNascimento){
+        validarDataNascimento(dataNascimento);
+        this.dataNascimento = dataNascimento;
+   }
+
 
 }
