@@ -100,6 +100,7 @@ public class Endereco extends Entity {
     }
 
     public static Endereco deletarEndereco(Endereco endereco) {
+        validarId(endereco.getID());
         endereco.setIsDelete(true);
         endereco.setDataDelete(LocalDate.now());
         return endereco;
