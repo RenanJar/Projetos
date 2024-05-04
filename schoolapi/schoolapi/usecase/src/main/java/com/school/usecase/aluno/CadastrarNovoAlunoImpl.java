@@ -15,6 +15,9 @@ public class CadastrarNovoAlunoImpl implements CadastrarNovoAluno {
     @Override
     public Aluno cadastrar(Aluno aluno) {
 
+        // cadastrar endereço - > regras -> entidade  se ok -> set aluno
+        // cadastrar o aluno -> regras -> entidade se ok -> gateway.Cadastrar()
+
         boolean isCadastrado = cadastrarAlunoGateway.cadastrar(aluno);
 
         if(isCadastrado){

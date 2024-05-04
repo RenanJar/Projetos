@@ -18,6 +18,21 @@
     </properties>
 
     <dependencies>
+
+        <!-- fly way-->
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>10.12.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-database-postgresql</artifactId>
+            <version>10.12.0</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!--Spring-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -34,17 +49,23 @@
             <scope>test</scope>
             <version>3.2.5</version>
         </dependency>
+
+        <!--Postgres-->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>42.7.3</version>
         </dependency>
+
+        <!--Junit-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>3.8.1</version>
             <scope>test</scope>
         </dependency>
+
+        <!--Modules Dependency-->
         <dependency>
             <groupId>com.school</groupId>
             <artifactId>interface</artifactId>

@@ -1,11 +1,11 @@
 package com.school.model;
 
-import com.school.entidade.endereco.Endereco;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.annotation.processing.Generated;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -13,7 +13,9 @@ import java.util.UUID;
 @Table(name="TBL_ALUNO")
 @Getter
 @Setter
-public class AlunoModel {
+@AllArgsConstructor
+@NoArgsConstructor
+public class AlunoModel extends BaseModel{
 
     @Id
     @Column(name = "alunoid")
@@ -26,13 +28,13 @@ public class AlunoModel {
     @Column(name = "dataNascimento")
     private LocalDate dataNascimento;
 
-    @Column(name ="endereco_id")
-    private Endereco endereco;
-
     @Column(name="numeroContato")
     private Long numeroContato;
 
     @Column(name="email")
     private String email;
 
+    @ManyToOne
+    @JoinColumn(name ="endereco_id")
+    private EnderecoModel endereco;
 }
