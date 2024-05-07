@@ -6,6 +6,5 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan({"com.school.infra"})
-@EntityScan(basePackages = {"com.school.infra"})
 public class InfraConfig {
 }

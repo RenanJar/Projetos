@@ -8,8 +8,8 @@ CREATE TABLE TBL_ENDERECO (
     estado varchar(2),
     pais varchar(255),
     cep numeric(8),
-    dataAtualizacao timestamp(),
-    dataInclusao timestamp(),
-    dataDelete timestamp(),
+    dataAtualizacao timestamp,
+    dataInclusao timestamp,
+    dataDelete timestamp,
     deletado boolean
 );
