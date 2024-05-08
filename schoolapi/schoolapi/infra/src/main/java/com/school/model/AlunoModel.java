@@ -25,16 +25,16 @@ public class AlunoModel extends BaseModel{
     @Column(name = "nome")
     private String nome;
 
-    @Column(name = "dataNascimento")
+    @Column(name = "datanascimento")
     private LocalDate dataNascimento;
 
-    @Column(name="numeroContato")
+    @Column(name="numerocontato")
     private Long numeroContato;
 
     @Column(name="email")
     private String email;
 
-    @ManyToOne
-    @JoinColumn(name ="endereco_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "endereco_id", referencedColumnName = "enderecoid")
     private EnderecoModel endereco;
 }

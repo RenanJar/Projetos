@@ -17,7 +17,7 @@ import java.util.UUID;
 public class EnderecoModel extends BaseModel{
 
     @Id
-    @Column(name = "alunoid")
+    @Column(name = "enderecoid")
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 

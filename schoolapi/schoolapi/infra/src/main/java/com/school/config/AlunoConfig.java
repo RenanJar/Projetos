@@ -2,6 +2,7 @@ package com.school.config;
 
 import com.school.gateway.CadastrarAlunoGateway;
 import com.school.mapper.AlunoMapper;
+import com.school.mapper.EnderecoMapper;
 import com.school.usecase.aluno.CadastrarNovoAlunoImpl;
 import com.school.usecaseinterface.aluno.CadastrarNovoAluno;
 import org.springframework.context.annotation.Bean;
@@ -16,8 +17,13 @@ public class AlunoConfig {
     }
 
     @Bean
-    public AlunoMapper alunoMapper(){
-        return new AlunoMapper();
+    public AlunoMapper alunoMapper(EnderecoMapper enderecoMapper){
+        return new AlunoMapper(enderecoMapper);
+    }
+
+    @Bean
+    public EnderecoMapper enderecoMapper(){
+        return new EnderecoMapper();
     }
 
 }

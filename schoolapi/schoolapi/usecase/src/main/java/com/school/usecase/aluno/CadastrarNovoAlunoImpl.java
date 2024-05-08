@@ -4,6 +4,8 @@ import com.school.entidade.aluno.Aluno;
 import com.school.gateway.CadastrarAlunoGateway;
 import com.school.usecaseinterface.aluno.CadastrarNovoAluno;
 
+import java.util.Optional;
+
 
 public class CadastrarNovoAlunoImpl implements CadastrarNovoAluno {
 
@@ -12,19 +14,15 @@ public class CadastrarNovoAlunoImpl implements CadastrarNovoAluno {
     public CadastrarNovoAlunoImpl(CadastrarAlunoGateway cadastrarAlunoGateway) {
         this.cadastrarAlunoGateway = cadastrarAlunoGateway;
     }
+
     @Override
     public Aluno cadastrar(Aluno aluno) {
 
-        // cadastrar endereço - > regras -> entidade  se ok -> set aluno
-        // cadastrar o aluno -> regras -> entidade se ok -> gateway.Cadastrar()
+        Optional<Aluno> alunoCadastrado = Optional.of(cadastrarAlunoGateway.cadastrar(aluno));
 
-        boolean isCadastrado = cadastrarAlunoGateway.cadastrar(aluno);
+        //log informando que nao foi cadastrado
 
-        if(isCadastrado){
-            return aluno;
-        }
-
-        return null;
+        return alunoCadastrado.isPresent() ? alunoCadastrado.get() : null;
     }
 
 

@@ -7,6 +7,7 @@ import com.school.usecaseinterface.aluno.CadastrarNovoAluno;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -23,7 +24,7 @@ public class AlunoController {
     }
 
     @PostMapping("/cadastrar")
-    ResponseEntity<Aluno> cadastrar(CadastrarAlunoRequest request){
+    ResponseEntity<Aluno> cadastrar(@RequestBody CadastrarAlunoRequest request){
         Aluno alunoCadastrado = cadastrarNovoAluno.cadastrar(alunoMapper.toAluno(request));
         return ResponseEntity.ok(alunoCadastrado);
     }
