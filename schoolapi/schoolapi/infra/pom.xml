@@ -18,7 +18,6 @@
     </properties>
 
     <dependencies>
-
         <!-- fly way-->
         <dependency>
             <groupId>org.flywaydb</groupId>
@@ -77,4 +76,6 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
+
+
 </project>
