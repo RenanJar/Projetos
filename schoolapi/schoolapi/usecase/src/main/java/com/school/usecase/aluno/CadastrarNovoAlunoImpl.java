@@ -3,17 +3,14 @@ package com.school.usecase.aluno;
 import com.school.entidade.aluno.Aluno;
 import com.school.gateway.CadastrarAlunoGateway;
 import com.school.usecaseinterface.aluno.CadastrarNovoAluno;
+import lombok.AllArgsConstructor;
 
 import java.util.Optional;
 
-
+@AllArgsConstructor
 public class CadastrarNovoAlunoImpl implements CadastrarNovoAluno {
 
     private CadastrarAlunoGateway cadastrarAlunoGateway;
-
-    public CadastrarNovoAlunoImpl(CadastrarAlunoGateway cadastrarAlunoGateway) {
-        this.cadastrarAlunoGateway = cadastrarAlunoGateway;
-    }
 
     @Override
     public Aluno cadastrar(Aluno aluno) {
@@ -24,7 +21,5 @@ public class CadastrarNovoAlunoImpl implements CadastrarNovoAluno {
 
         return alunoCadastrado.isPresent() ? alunoCadastrado.get() : null;
     }
-
-
 
 }
