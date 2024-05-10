@@ -12,7 +12,6 @@
   <modules>
     <module>core</module>
     <module>usecase</module>
-    <module>interface</module>
     <module>infra</module>
   </modules>
 

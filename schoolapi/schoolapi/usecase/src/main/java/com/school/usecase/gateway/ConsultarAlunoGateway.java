@@ -1,4 +1,4 @@
-package com.school.usecase.aluno;
+package com.school.usecase.gateway;
 
 import com.school.entidade.aluno.Aluno;
 

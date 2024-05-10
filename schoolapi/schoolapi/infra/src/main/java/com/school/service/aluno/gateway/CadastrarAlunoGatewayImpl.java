@@ -1,11 +1,12 @@
 package com.school.service.aluno.gateway;
 
 import com.school.entidade.aluno.Aluno;
-import com.school.gateway.CadastrarAlunoGateway;
+
 import com.school.mapper.Aluno_Mapper;
 import com.school.model.AlunoModel;
 import com.school.repositoryimpl.JpaAlunoRepository;
 import com.school.repositoryimpl.JpaEnderecoRepository;
+import com.school.usecase.gateway.CadastrarAlunoGateway;
 import lombok.AllArgsConstructor;
 import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Service;

@@ -1,8 +1,9 @@
 package com.school.usecase.aluno;
 
 import com.school.entidade.aluno.Aluno;
+import com.school.usecase.gateway.ConsultarAlunoGateway;
 
-public class ConsultarAlunoImpl implements IconsultarAluno {
+public class ConsultarAlunoImpl {
 
     private ConsultarAlunoGateway consultarAlunoGateway;
 
@@ -10,8 +11,4 @@ public class ConsultarAlunoImpl implements IconsultarAluno {
         this.consultarAlunoGateway = consultarAlunoGateway;
     }
 
-    @Override
-    public Aluno consultarAluno(String id) {
-        return null;
-    }
 }

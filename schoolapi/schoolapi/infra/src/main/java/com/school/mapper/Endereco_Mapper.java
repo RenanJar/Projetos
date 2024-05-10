@@ -40,6 +40,6 @@ public interface Endereco_Mapper {
     @Mapping(target = "estado", source = "estado")
     @Mapping(target = "pais", source = "pais")
     @Mapping(target = "cep", source = "cep")
-    @Mapping(target = "isDelete", source = "deletado")
+    @Mapping(target = "isDelete", source = "isDeletado")
     Endereco toEntity(EnderecoModel enderecoModel);
 }

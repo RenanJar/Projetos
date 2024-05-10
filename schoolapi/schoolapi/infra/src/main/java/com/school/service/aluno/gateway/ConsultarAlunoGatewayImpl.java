@@ -2,7 +2,7 @@ package com.school.service.aluno.gateway;
 
 import com.school.entidade.aluno.Aluno;
 import com.school.repositoryimpl.JpaAlunoRepository;
-import com.school.usecase.aluno.ConsultarAlunoGateway;
+import com.school.usecase.gateway.ConsultarAlunoGateway;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor

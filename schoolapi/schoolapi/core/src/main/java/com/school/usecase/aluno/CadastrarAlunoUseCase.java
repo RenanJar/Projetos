@@ -2,7 +2,7 @@ package com.school.usecase.aluno;
 
 import com.school.entidade.aluno.Aluno;
 
-public interface IconsultarAluno {
+public interface CadastrarAlunoUseCase {
 
-    Aluno consultarAluno(String id);
+    Aluno cadastrar(Aluno aluno);
 }
