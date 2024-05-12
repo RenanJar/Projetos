@@ -1,30 +1,30 @@
 package com.school.controler.aluno;
 
 import com.school.dto.request.CadastrarAlunoRequest;
+import com.school.dto.response.CadastrarAlunoResponse;
+import com.school.dto.response.ConsultarAlunoResponse;
 import com.school.entidade.aluno.Aluno;
-import com.school.mapper.AlunoMapper;
-import com.school.usecaseinterface.aluno.CadastrarNovoAluno;
+import com.school.service.aluno.AlunoService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/api/v1/aluno")
+@AllArgsConstructor
 public class AlunoController {
 
-    private CadastrarNovoAluno cadastrarNovoAluno;
-
-    private AlunoMapper alunoMapper;
-
-    public AlunoController(CadastrarNovoAluno cadastrarNovoAluno, AlunoMapper alunoMapper) {
-        this.cadastrarNovoAluno = cadastrarNovoAluno;
-        this.alunoMapper = alunoMapper;
-    }
+    private AlunoService alunoService;
 
     @PostMapping("/cadastrar")
-    ResponseEntity<Aluno> cadastrar(CadastrarAlunoRequest request){
-        Aluno alunoCadastrado = cadastrarNovoAluno.cadastrar(alunoMapper.toAluno(request));
-        return ResponseEntity.ok(alunoCadastrado);
+    ResponseEntity<CadastrarAlunoResponse> cadastrar(@RequestBody CadastrarAlunoRequest request) {
+        return ResponseEntity.ok(alunoService.cadastrarNovoAluno(request));
     }
+
+    @GetMapping("/consultar/{ID}")
+    ResponseEntity<ConsultarAlunoResponse> consultar(@RequestParam String id) {
+        return ResponseEntity.ok(alunoService.consultarAluno(id));
+    }
+
 }

@@ -1,9 +1,9 @@
 package com.school.config;
 
-import com.school.gateway.CadastrarAlunoGateway;
-import com.school.mapper.AlunoMapper;
+
+import com.school.usecase.aluno.CadastrarAlunoUseCase;
 import com.school.usecase.aluno.CadastrarNovoAlunoImpl;
-import com.school.usecaseinterface.aluno.CadastrarNovoAluno;
+import com.school.usecase.gateway.CadastrarAlunoGateway;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -11,13 +11,8 @@ import org.springframework.context.annotation.Configuration;
 public class AlunoConfig {
 
     @Bean
-    public CadastrarNovoAluno cadastrarNovoAluno(CadastrarAlunoGateway cadastrarAlunoGateway){
+    public CadastrarAlunoUseCase cadastrarNovoAluno(CadastrarAlunoGateway cadastrarAlunoGateway){
         return new CadastrarNovoAlunoImpl(cadastrarAlunoGateway);
-    }
-
-    @Bean
-    public AlunoMapper alunoMapper(){
-        return new AlunoMapper();
     }
 
 }

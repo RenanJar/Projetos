@@ -2,14 +2,13 @@ package com.school.entidade.endereco;
 
 import com.school.entidade.Entity;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.UUID;
 
+
 @Getter
-@Setter
 public class Endereco extends Entity {
 
     private String logradouro;
@@ -21,8 +20,8 @@ public class Endereco extends Entity {
     private String pais;
     private Long cep;
 
-    private Endereco(
-            UUID id,
+    public Endereco(
+            UUID ID,
             String logradouro,
             Long numero,
             String complemento,
@@ -34,9 +33,9 @@ public class Endereco extends Entity {
             LocalDate dataInclusao,
             LocalDate dataAtualizacao,
             LocalDate dataDelete,
-            Boolean isDeleted
+            Boolean isDelete
     ){
-        this.ID = id;
+        this.ID = ID;
         this.logradouro = logradouro;
         this.numero = numero;
         this.complemento = complemento;
@@ -48,7 +47,7 @@ public class Endereco extends Entity {
         this.dataInclusao = dataInclusao;
         this.dataAtualizacao = dataAtualizacao;
         this.dataDelete = dataDelete;
-        this.isDelete = isDeleted;
+        this.isDelete = isDelete;
     }
 
     private Endereco(){}
@@ -167,4 +166,35 @@ public class Endereco extends Entity {
         Objects.requireNonNull(cep,"Cep nao pode ser vazio");
     }
 
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
+    }
+
+    public void setNumero(Long numero) {
+        this.numero = numero;
+    }
+
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public void setPais(String pais) {
+        this.pais = pais;
+    }
+
+    public void setCep(Long cep) {
+        this.cep = cep;
+    }
 }

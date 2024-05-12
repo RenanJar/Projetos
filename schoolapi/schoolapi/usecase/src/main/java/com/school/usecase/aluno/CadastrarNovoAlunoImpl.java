@@ -1,29 +1,23 @@
 package com.school.usecase.aluno;
 
 import com.school.entidade.aluno.Aluno;
-import com.school.gateway.CadastrarAlunoGateway;
-import com.school.usecaseinterface.aluno.CadastrarNovoAluno;
+import com.school.usecase.gateway.CadastrarAlunoGateway;
+import lombok.AllArgsConstructor;
+import java.util.Optional;
 
-
-public class CadastrarNovoAlunoImpl implements CadastrarNovoAluno {
+@AllArgsConstructor
+public class CadastrarNovoAlunoImpl implements  CadastrarAlunoUseCase{
 
     private CadastrarAlunoGateway cadastrarAlunoGateway;
 
-    public CadastrarNovoAlunoImpl(CadastrarAlunoGateway cadastrarAlunoGateway) {
-        this.cadastrarAlunoGateway = cadastrarAlunoGateway;
-    }
     @Override
     public Aluno cadastrar(Aluno aluno) {
 
-        boolean isCadastrado = cadastrarAlunoGateway.cadastrar(aluno);
+        Optional<Aluno> alunoCadastrado = Optional.of(cadastrarAlunoGateway.cadastrar(aluno));
 
-        if(isCadastrado){
-            return aluno;
-        }
+        //log informando que nao foi cadastrado
 
-        return null;
+        return alunoCadastrado.isPresent() ? alunoCadastrado.get() : null;
     }
-
-
 
 }
