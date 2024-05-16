@@ -4,10 +4,11 @@ import com.school.entidade.Entity;
 import com.school.entidade.endereco.Endereco;
 import com.school.entidade.exceptions.DomainExceptions;
 import com.school.entidade.exceptions.Notification;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
-import java.util.Objects;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Getter
@@ -27,9 +28,9 @@ public class Aluno extends Entity {
             Endereco endereco,
             Long numeroContato,
             String email,
-            LocalDate dataInclusao,
-            LocalDate dataAtualizacao,
-            LocalDate dataDelete,
+            LocalDateTime dataInclusao,
+            LocalDateTime dataAtualizacao,
+            LocalDateTime dataDelete,
             Boolean isDeleted
     ){
         super(ID,dataInclusao,dataAtualizacao,dataDelete,isDeleted);

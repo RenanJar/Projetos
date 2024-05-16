@@ -7,6 +7,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import org.mockito.Mockito;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class AlunoTest {
@@ -50,7 +51,7 @@ public class AlunoTest {
     @Test
     public void whenCallingTheConstructor_ifIdIsPresentAndDateControlsExists_then_itShouldNotThrowException(){
         UUID id = UUID.randomUUID();
-        LocalDate dataIncl = LocalDate.now();
+        LocalDateTime dataIncl = LocalDateTime.now();
         try{
             Aluno alunoExpect = new Aluno(id,nome,dataNascimento,mockedEndereco,numeroContato,email,dataIncl,null,null,null);
             assertEquals(dataIncl,alunoExpect.getDataInclusao());

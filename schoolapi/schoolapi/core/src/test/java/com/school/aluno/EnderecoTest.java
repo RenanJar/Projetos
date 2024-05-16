@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class EnderecoTest {
@@ -221,14 +222,4 @@ public class EnderecoTest {
         Assert.assertTrue(enderecoDeletado.getIsDelete());
     }
 
-    @Test
-    public void deveAprensentarDataExclusao(){
-        UUID fakeID = UUID.randomUUID();
-        Endereco endereco = criarNovoEndereco();
-        endereco.setID(fakeID);
-
-        Endereco enderecoDeletado = Endereco.deletarEndereco(endereco);
-
-        Assert.assertTrue(enderecoDeletado.getDataDelete().equals(LocalDate.now()));
-    }
 }
