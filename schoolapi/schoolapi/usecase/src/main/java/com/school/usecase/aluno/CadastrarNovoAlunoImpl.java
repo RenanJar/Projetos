@@ -3,6 +3,8 @@ package com.school.usecase.aluno;
 import com.school.entidade.aluno.Aluno;
 import com.school.usecase.gateway.CadastrarAlunoGateway;
 import lombok.AllArgsConstructor;
+
+import java.time.LocalDate;
 import java.util.Optional;
 
 @AllArgsConstructor
@@ -12,6 +14,9 @@ public class CadastrarNovoAlunoImpl implements  CadastrarAlunoUseCase{
 
     @Override
     public Aluno cadastrar(Aluno aluno) {
+
+        aluno.setDataInclusao(LocalDate.now());
+        aluno.validate();
 
         Optional<Aluno> alunoCadastrado = Optional.of(cadastrarAlunoGateway.cadastrar(aluno));
 
