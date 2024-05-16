@@ -59,7 +59,7 @@ public class Aluno extends Entity {
 
     public Aluno(){}
 
-    private void validate(){
+    public void validate(){
         Notification notification = new Notification();
         notification.add(()->{verifyStringError(nome,"Name");});
         notification.add(()->{verifyObjectError(dataNascimento,"Date of Birth");});
