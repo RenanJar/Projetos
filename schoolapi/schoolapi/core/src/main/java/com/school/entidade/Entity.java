@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -15,14 +16,12 @@ import java.util.UUID;
 @NoArgsConstructor
 public abstract class Entity {
     protected UUID ID;
-    protected LocalDate dataInclusao;
-    protected LocalDate dataAtualizacao;
-    protected LocalDate dataDelete;
+    protected LocalDateTime dataInclusao;
+    protected LocalDateTime dataAtualizacao;
+    protected LocalDateTime dataDelete;
     protected Boolean isDelete;
-    protected Boolean isValid = false;
-    protected List<Notification> notifications = new ArrayList<>();
 
-    public Entity(UUID ID, LocalDate dataInclusao, LocalDate dataAtualizacao, LocalDate dataDelete, Boolean isDelete) {
+    public Entity(UUID ID, LocalDateTime dataInclusao, LocalDateTime dataAtualizacao, LocalDateTime dataDelete, Boolean isDelete) {
         this.ID = ID;
         this.dataInclusao = dataInclusao;
         this.dataAtualizacao = dataAtualizacao;

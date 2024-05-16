@@ -4,6 +4,7 @@ import com.school.entidade.Entity;
 import lombok.Getter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -30,9 +31,9 @@ public class Endereco extends Entity {
             String estado,
             String pais,
             Long cep,
-            LocalDate dataInclusao,
-            LocalDate dataAtualizacao,
-            LocalDate dataDelete,
+            LocalDateTime dataInclusao,
+            LocalDateTime dataAtualizacao,
+            LocalDateTime dataDelete,
             Boolean isDelete
     ){
         this.ID = ID;
@@ -61,7 +62,7 @@ public class Endereco extends Entity {
             String pais,
             Long cep
     ){
-        LocalDate dataHoje = LocalDate.now();
+        LocalDateTime dataHoje = LocalDateTime.now();
 
         Endereco novoEndereco = new Endereco(
                 null,
@@ -92,7 +93,7 @@ public class Endereco extends Entity {
         enderecoAtual.setEstado(enderecoParaAtualizar.getEstado());
         enderecoAtual.setPais(enderecoParaAtualizar.getPais());
         enderecoAtual.setCep(enderecoParaAtualizar.getCep());
-        enderecoAtual.setDataAtualizacao(LocalDate.now());
+        enderecoAtual.setDataAtualizacao(LocalDateTime.now());
         enderecoAtual.setIsDelete(false);
 
         return validarAtualizarEndereco(enderecoAtual);
@@ -101,7 +102,7 @@ public class Endereco extends Entity {
     public static Endereco deletarEndereco(Endereco endereco) {
         validarId(endereco.getID());
         endereco.setIsDelete(true);
-        endereco.setDataDelete(LocalDate.now());
+        endereco.setDataDelete(LocalDateTime.now());
         return endereco;
     }
 

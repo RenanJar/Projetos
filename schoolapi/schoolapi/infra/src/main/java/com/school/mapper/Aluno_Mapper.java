@@ -33,6 +33,9 @@ public interface Aluno_Mapper {
     @Mapping(source = "endereco",target = "endereco")
     @Mapping(source = "numeroContato",target = "numeroContato")
     @Mapping(source = "email",target = "email")
+    @Mapping(source = "dataInclusao",target = "dataInclusao")
+    @Mapping(source = "dataAtualizacao",target = "dataAtualizacao")
+    @Mapping(source = "dataDelete",target = "dataDelete")
     AlunoModel toModel(Aluno entity);
 
     @Mapping(source = "nome",target = "nome")

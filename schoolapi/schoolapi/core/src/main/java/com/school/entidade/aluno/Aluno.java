@@ -7,6 +7,7 @@ import com.school.entidade.exceptions.Notification;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -27,9 +28,9 @@ public class Aluno extends Entity {
             Endereco endereco,
             Long numeroContato,
             String email,
-            LocalDate dataInclusao,
-            LocalDate dataAtualizacao,
-            LocalDate dataDelete,
+            LocalDateTime dataInclusao,
+            LocalDateTime dataAtualizacao,
+            LocalDateTime dataDelete,
             Boolean isDeleted
     ){
         super(ID,dataInclusao,dataAtualizacao,dataDelete,isDeleted);
