@@ -1,14 +1,10 @@
 package com.school.entidade;
 
-import com.school.entidade.exceptions.Notification;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 @Getter

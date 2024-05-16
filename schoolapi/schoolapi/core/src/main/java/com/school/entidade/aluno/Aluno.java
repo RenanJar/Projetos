@@ -4,11 +4,11 @@ import com.school.entidade.Entity;
 import com.school.entidade.endereco.Endereco;
 import com.school.entidade.exceptions.DomainExceptions;
 import com.school.entidade.exceptions.Notification;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Objects;
 import java.util.UUID;
 
 @Getter
