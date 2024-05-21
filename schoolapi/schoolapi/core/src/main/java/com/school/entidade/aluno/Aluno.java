@@ -68,10 +68,9 @@ public class Aluno extends Entity {
         notification.add(()->{verifyObjectError(numeroContato,"Contact number");});
         notification.add(()->{verifyStringError(email,"E-mail");});
         notification.add(()->{validateControlData();});
+        if (endereco != null) endereco.validate();
         notification.dispatch();
     }
-
-
 
    private void validateControlData(){
 
