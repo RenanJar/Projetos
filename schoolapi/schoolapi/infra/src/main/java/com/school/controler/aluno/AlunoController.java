@@ -3,7 +3,6 @@ package com.school.controler.aluno;
 import com.school.dto.request.CadastrarAlunoRequest;
 import com.school.dto.response.CadastrarAlunoResponse;
 import com.school.dto.response.ConsultarAlunoResponse;
-import com.school.entidade.aluno.Aluno;
 import com.school.service.aluno.AlunoService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;

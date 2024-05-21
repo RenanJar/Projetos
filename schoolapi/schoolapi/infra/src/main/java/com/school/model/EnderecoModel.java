@@ -1,10 +1,7 @@
 package com.school.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
@@ -40,7 +37,7 @@ public class EnderecoModel extends BaseModel{
     @Column(name = "cep")
     private Long cep;
 
-    public EnderecoModel(LocalDate dataAtualizacao, LocalDate dataInclusao, LocalDate dataDelete, Boolean isDeletado, UUID ID, String logradouro, Long numero, String complemento, String bairro, String cidade, String estado, Long cep, String pais) {
+    public EnderecoModel(LocalDateTime dataAtualizacao, LocalDateTime dataInclusao, LocalDateTime dataDelete, Boolean isDeletado, UUID ID, String logradouro, Long numero, String complemento, String bairro, String cidade, String estado, Long cep, String pais) {
         super(dataAtualizacao, dataInclusao, dataDelete, isDeletado);
         this.ID = ID;
         this.logradouro = logradouro;

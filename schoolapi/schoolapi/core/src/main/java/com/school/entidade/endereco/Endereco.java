@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Objects;
 import java.util.UUID;
 
 
@@ -33,9 +35,9 @@ public class Endereco extends Entity {
             String estado,
             String pais,
             Long cep,
-            LocalDate dataInclusao,
-            LocalDate dataAtualizacao,
-            LocalDate dataDelete,
+            LocalDateTime dataInclusao,
+            LocalDateTime dataAtualizacao,
+            LocalDateTime dataDelete,
             Boolean isDelete
     ){
         this.ID = ID;
