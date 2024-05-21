@@ -39,5 +39,4 @@ public class NotificationTest {
 
         Assert.assertTrue(expected.equals("NotBeNull"));
     }
-
 }
